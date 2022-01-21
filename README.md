@@ -1,12 +1,9 @@
 # alcoolougasolina
 
-A new Flutter project.
+Abasteça com o melhor pra você e seu bolso!
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+Primeiro projeto postado aqui. Foi criado mais para o estudo da ferramenta Flutter.
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
