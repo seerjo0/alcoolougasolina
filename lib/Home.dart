@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
         consumoAlcool == null) {
       setState(() {
         _textoResultado =
-            "Número inválido! Digite números maiores que 0 e utilizando ponto (.)";
+            "Número inválido! Digite números maiores que zero (0) e utilizando ponto (.)";
       });
     } else {
       if ((consumoAlcool / consumoGasolina * precoGasolina) >= precoAlcool) {
