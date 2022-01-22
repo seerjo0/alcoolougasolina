@@ -10,26 +10,33 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TextEditingController _controllerAlcool = TextEditingController();
   TextEditingController _controllerGasolina = TextEditingController();
+  TextEditingController _controllerCalc = TextEditingController();
+  TextEditingController _controllerCgas = TextEditingController();
 
   String _textoResultado = "";
 
-  void _calcular() {
+  void _calcularAbastecimento() {
     double? precoAlcool = double.tryParse(_controllerAlcool.text);
     double? precoGasolina = double.tryParse(_controllerGasolina.text);
+    double? consumoAlcool = double.tryParse(_controllerCalc.text);
+    double? consumoGasolina = double.tryParse(_controllerCgas.text);
 
-    if (precoAlcool == null || precoGasolina == null) {
+    if (precoAlcool == null ||
+        precoGasolina == null ||
+        consumoGasolina == null ||
+        consumoAlcool == null) {
       setState(() {
         _textoResultado =
             "Número inválido! Digite números maiores que 0 e utilizando ponto (.)";
       });
     } else {
-      if ((precoAlcool / precoGasolina) >= 0.7) {
+      if ((consumoAlcool / consumoGasolina * precoGasolina) >= precoAlcool) {
         setState(() {
-          _textoResultado = "Abasteça com Gasolina";
+          _textoResultado = "Abasteça com Álcool";
         });
       } else {
         setState(() {
-          _textoResultado = "Abasteça com Álcool";
+          _textoResultado = "Abasteça com Gasolina";
         });
       }
     }
@@ -43,20 +50,41 @@ class _HomeState extends State<Home> {
         ),
         body: Container(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(32),
+            padding: EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
-                    padding: EdgeInsets.only(top: 10),
-                    child: Image.asset("assets/abre.jpg")),
+                    padding: EdgeInsets.only(bottom: 30, top: 10),
+                    child: Image.asset("assets/abre.png")),
                 Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
                       "Saiba qual a melhor opção para abastecimento do seu carro",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      textAlign: TextAlign.center,
                     )),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      labelText: "Km/Litro com Álcool (ex: 9.2)"),
+                  style: TextStyle(fontSize: 22, color: Colors.green),
+                  onSubmitted: (String texto) {
+                    print("valor digitado:" + texto);
+                  },
+                  controller: _controllerCalc,
+                ),
+                TextField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      labelText: "Km/Litro com Gasolina (ex: 12.3)"),
+                  style: TextStyle(fontSize: 22, color: Colors.lightBlue),
+                  onSubmitted: (String texto) {
+                    print("valor digitado:" + texto);
+                  },
+                  controller: _controllerCgas,
+                ),
                 TextField(
                   keyboardType: TextInputType.number,
                   decoration:
@@ -90,7 +118,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         color: Colors.lightBlue,
-                        onPressed: _calcular)),
+                        onPressed: _calcularAbastecimento)),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text(
