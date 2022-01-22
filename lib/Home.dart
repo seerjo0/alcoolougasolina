@@ -105,7 +105,7 @@ class _HomeState extends State<Home> {
                   },
                   controller: _controllerGasolina,
                 ),
-                Padding(
+                /*Padding(
                     padding: EdgeInsets.all(15),
                     child: RaisedButton(
                         padding: EdgeInsets.all(15),
@@ -118,12 +118,33 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         color: Colors.lightBlue,
-                        onPressed: _calcularAbastecimento)),
+                        onPressed: _calcularAbastecimento)),*/
                 Padding(
                   padding: EdgeInsets.only(top: 20),
                   child: Text(
                     _textoResultado,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                FloatingActionButton(
+                  tooltip: "Calcular",
+                  onPressed: _calcularAbastecimento,
+                  backgroundColor: Colors.lightBlue,
+                  child: const Icon(Icons.calculate),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(35),
+                  child: BottomAppBar(
+                    child: Text(
+                      "Desenvolvido por Sérgio Steiner.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                          color: Colors.white),
+                    ),
+                    color: Colors.lightBlue,
                   ),
                 )
               ],
