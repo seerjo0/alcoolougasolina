@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'Home.dart';
 
 void main() {
-  runApp(
-    const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-    ),
-  );
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Home(),
+  ));
 }
